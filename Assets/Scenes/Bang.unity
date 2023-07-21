@@ -560,7 +560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 326482116}
-  - component: {fileID: 326482115}
+  - component: {fileID: 326482117}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -568,19 +568,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &326482115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326482114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36afd4e3b64a0bd46aa2537467ffd30d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diceSo: {fileID: 0}
 --- !u!4 &326482116
 Transform:
   m_ObjectHideFlags: 0
@@ -596,6 +583,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &326482117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326482114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36afd4e3b64a0bd46aa2537467ffd30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceSO: {fileID: 11400000, guid: 712d5069c36119b45aa72309694b7cf6, type: 2}
+  testDice: {fileID: 2065203036}
 --- !u!1 &339713105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,7 +2539,7 @@ GameObject:
   - component: {fileID: 2065203034}
   - component: {fileID: 2065203036}
   m_Layer: 0
-  m_Name: TestDice
+  m_Name: Dice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2584,7 +2585,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 6bbd69b0d7077da4191cf33742474d3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2604,7 +2605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065203033}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.4, y: -2.206, z: 0}
+  m_LocalPosition: {x: -2.4, y: -2.2, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:

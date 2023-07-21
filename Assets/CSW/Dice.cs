@@ -16,6 +16,11 @@ public class Dice : MonoBehaviour
     {
         this.diceDate = diceDate;
         spriteRenderer.sprite = diceDate.sprite; 
+
+        for(int i = 0; i < Utils.MAX_DICE_LEVEL; i++)
+        {
+            dots[i].GetComponent<SpriteRenderer>().color = diceDate.color;
+        }
     }
 
     public void SetDots(int level)

@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4502ad50b7b629841bcefdb78130548d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 993761634}
   diceDate:
     code: 0
     sprite: {fileID: 0}

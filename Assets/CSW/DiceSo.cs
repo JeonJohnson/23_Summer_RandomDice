@@ -11,9 +11,9 @@ public class DiceDate
     public Color color;
 }
 
-    [CreateAssetMenu(fileName = "DiceSo", menuName = "Scriptable Object/DiceSo")]
+    [CreateAssetMenu(fileName = "DiceSO", menuName = "Scriptable Object/DiceSO")]
 
-    public class DiceSo : ScriptableObject
+    public class DiceSO : ScriptableObject
     {
         public DiceDate[] diceDates;
 
