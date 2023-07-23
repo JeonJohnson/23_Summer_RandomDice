@@ -47,29 +47,14 @@ public class ObjectPooler : MonoBehaviour
             return null;
         }
 
-        GameObject objectToSpawn = null;
+        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
-        if (poolDictionary[tag].Count > 0)
-        {
-            objectToSpawn = poolDictionary[tag].Dequeue();
-            objectToSpawn.transform.position = position;
-            objectToSpawn.transform.rotation = rotation;
-            objectToSpawn.SetActive(true);
-        }
-        else
-        {
-            Pool pool = pools.Find(p => p.tag == tag);
-            if (pool != null)
-            {
-                objectToSpawn = Instantiate(pool.prefab, position, rotation);
-                spawnedObjects.Add(objectToSpawn);
-            }
-            else
-            {
-                Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
-                return null;
-            }
-        }
+        objectToSpawn.transform.position = position;
+        objectToSpawn.transform.rotation = rotation;
+        objectToSpawn.SetActive(true);
+
+        poolDictionary[tag].Enqueue(objectToSpawn);
+
         return objectToSpawn;
     }
 }

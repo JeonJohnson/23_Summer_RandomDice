@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
         if (emptyserializeDiceData.Length <= 0)
             return false;
         
-
         int randIndex = emptyserializeDiceData[Random.Range(0, emptyserializeDiceData.Length)].index;
         Vector3 randPos = spawnPositions[randIndex];
         var randDiceData = diceSO.GetRandomDiceData();
