@@ -23,7 +23,6 @@ public class ObjectPooler : MonoBehaviour
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        // 미리 생성
         foreach (Pool pool in pools)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
@@ -50,7 +49,6 @@ public class ObjectPooler : MonoBehaviour
 
         GameObject objectToSpawn = null;
 
-        // Check if there's an inactive object in the pool
         if (poolDictionary[tag].Count > 0)
         {
             objectToSpawn = poolDictionary[tag].Dequeue();
@@ -60,7 +58,6 @@ public class ObjectPooler : MonoBehaviour
         }
         else
         {
-            // If the pool is empty, instantiate a new object
             Pool pool = pools.Find(p => p.tag == tag);
             if (pool != null)
             {
@@ -73,7 +70,6 @@ public class ObjectPooler : MonoBehaviour
                 return null;
             }
         }
-
         return objectToSpawn;
     }
 }

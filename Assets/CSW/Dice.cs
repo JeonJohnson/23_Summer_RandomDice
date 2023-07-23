@@ -8,18 +8,20 @@ public class Dice : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
 
     [Header("Values")]
-    [SerializeField] DiceDate diceDate;
+    [SerializeField] SerializeDiceData serializeDiceData;
     [SerializeField] Transform[] dots;
     [SerializeField] int level; //1~6±îÁö
 
-    public void SetupSlot(DiceDate diceDate)
+    public void SetupSlot(SerializeDiceData serializeDiceData)
     {
-        this.diceDate = diceDate;
-        spriteRenderer.sprite = diceDate.sprite; 
+        this.serializeDiceData = serializeDiceData;
+        var diceData = GameManager.Inst.diceSO.GetDiceDate(serializeDiceData.code);
+        spriteRenderer.sprite = diceData.sprite;
+        SetDots(serializeDiceData.level);
 
         for(int i = 0; i < Utils.MAX_DICE_LEVEL; i++)
         {
-            dots[i].GetComponent<SpriteRenderer>().color = diceDate.color;
+            dots[i].GetComponent<SpriteRenderer>().color = diceData.color;
         }
     }
 
