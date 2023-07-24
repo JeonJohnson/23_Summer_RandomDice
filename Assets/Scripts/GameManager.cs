@@ -44,4 +44,10 @@ public class GameManager : MonoBehaviour
     {
         TryRandomSpawn();
     }
+
+    public Vector2 GetspawnPositions(int index) => spawnPositions[index];
+    
+
+    
+
 }

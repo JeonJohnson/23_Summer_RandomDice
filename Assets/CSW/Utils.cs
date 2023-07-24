@@ -24,4 +24,14 @@ public class Utils
     public const int MAX_DICE_LEVEL = 6;
 
     public static readonly Quaternion QI = Quaternion.identity;
+
+    public static Vector3 Mousepos
+    {
+        get
+        {
+            var result = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            result.z = 0;
+            return result;  
+        }
+    }
 }

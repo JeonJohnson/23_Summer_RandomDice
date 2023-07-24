@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+
 
 public class Dice : MonoBehaviour
 {
@@ -55,19 +57,51 @@ public class Dice : MonoBehaviour
         SetDots(1);
     }
 
-    void Update()
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Keypad1))
+    //        SetDots(1);
+    //    if (Input.GetKeyDown(KeyCode.Keypad2))
+    //        SetDots(2);
+    //    if (Input.GetKeyDown(KeyCode.Keypad3))
+    //        SetDots(3);
+    //    if (Input.GetKeyDown(KeyCode.Keypad4))
+    //        SetDots(4);
+    //    if (Input.GetKeyDown(KeyCode.Keypad5))
+    //        SetDots(5);
+    //    if (Input.GetKeyDown(KeyCode.Keypad6))
+    //        SetDots(6);
+    //}
+
+    public void OnMouseDown()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-            SetDots(1);
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-            SetDots(2);
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-            SetDots(3);
-        if (Input.GetKeyDown(KeyCode.Keypad4))
-            SetDots(4);
-        if (Input.GetKeyDown(KeyCode.Keypad5))
-            SetDots(5);
-        if (Input.GetKeyDown(KeyCode.Keypad6))
-            SetDots(6);
+        print("üũ");
     }
+
+    public void OnMouseDrag()
+    {
+        transform.position = Utils.Mousepos;
+    }
+
+    public void OnMouseUp()
+    {
+        MoveTransform(GameManager.Inst.GetspawnPositions(serializeDiceData.index), true, 1f);
+    }
+
+    
+
+    void MoveTransform(Vector2 targetpos, bool useDotween, float duration = 0f) 
+    {
+        if (useDotween)
+        {
+            transform.DOMove(targetpos, duration);
+        }
+        else
+        {
+            transform.position = targetpos;
+        }
+
+
+    }
+
 }
