@@ -13,15 +13,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] Vector2[] spawnPositions;
     [SerializeField] SerializeDiceData[] serializeDiceDatas; //모든 주사위 정보 직렬화 
 
+    
+    
+    
+    
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            TryRandomSpawn();
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        { 
+            var raycastAll = GetRaycastAll(Utils.DICE_LAYER); 
         }
     }
 
-    public bool TryRandomSpawn()
+    public bool TryRandomSpawn(int level = 1)
     {
         var emptyserializeDiceData = Array.FindAll(serializeDiceDatas, x => x.isFull == false);
 
@@ -46,8 +50,15 @@ public class GameManager : MonoBehaviour
     }
 
     public Vector2 GetspawnPositions(int index) => spawnPositions[index];
-    
 
-    
-
+    public GameObject[] GetRaycastAll(int layerMask)
+    {
+       
+            var mousePos = Utils.Mousepos;
+            mousePos.z = -100f;
+            RaycastHit2D[] raycastHit2Ds = Physics2D.RaycastAll(mousePos, Vector3.forward, float.MaxValue, 1 << layerMask);
+            var results = Array.ConvertAll(raycastHit2Ds, x => x.collider.gameObject);
+            return results;  
+        
+    }
 }

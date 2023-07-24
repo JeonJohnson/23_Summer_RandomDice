@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using System;
+using static UnityEngine.RuleTile.TilingRuleOutput;
+using UnityEngine.UIElements;
 
 public class Dice : MonoBehaviour
 {
     [Header("Conponents")]
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Order order;
 
     [Header("Values")]
-    [SerializeField] SerializeDiceData serializeDiceData;
-    [SerializeField] Transform[] dots;
+    public SerializeDiceData serializeDiceData;
+    [SerializeField] UnityEngine.Transform[] dots;
     [SerializeField] int level; //1~6까지
 
     public void SetupSlot(SerializeDiceData serializeDiceData)
@@ -52,6 +55,19 @@ public class Dice : MonoBehaviour
         }
     }
 
+
+    void OnDisable()
+    {
+        serializeDiceData = null;
+        spriteRenderer.sprite = null;
+        SetDots(0);
+        for (int i = 0; i < Utils.MAX_DICE_LEVEL; i++)
+        {
+            dots[i].GetComponent<SpriteRenderer>().color = Color.white;
+        }
+    }
+
+
     void Start()
     {
         SetDots(1);
@@ -75,7 +91,7 @@ public class Dice : MonoBehaviour
 
     public void OnMouseDown()
     {
-        print("체크");
+        order.SetMostFrontOrder(true);
     }
 
     public void OnMouseDrag()
@@ -85,22 +101,43 @@ public class Dice : MonoBehaviour
 
     public void OnMouseUp()
     {
-        MoveTransform(GameManager.Inst.GetspawnPositions(serializeDiceData.index), true, 1f);
+       
+        MoveTransform(GameManager.Inst.GetspawnPositions(serializeDiceData.index), true, 0.2f, () => order.SetMostFrontOrder(false));
+
+        GameObject[] raycastAll = GameManager.Inst.GetRaycastAll(Utils.DICE_LAYER);
+        GameObject targetDiceObj = Array.Find(raycastAll, x => x.gameObject != gameObject);
+        
+        if (targetDiceObj != null)
+        {
+            var targetDice = targetDiceObj.GetComponent<Dice>();
+            if(serializeDiceData.code == targetDice.serializeDiceData.code
+                && serializeDiceData.level == targetDice.serializeDiceData.level)
+            {
+                int nextLevel = serializeDiceData.level + 1;
+                if (nextLevel > Utils.MAX_DICE_LEVEL)
+                    return;
+                
+                var targetSerializeDiceData = targetDice.serializeDiceData;
+                targetSerializeDiceData.code = GameManager.Inst.diceSO.GetRandomDiceData().code;
+                targetSerializeDiceData.level = nextLevel;
+                targetDice.SetupSlot(targetSerializeDiceData);
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     
 
-    void MoveTransform(Vector2 targetpos, bool useDotween, float duration = 0f) 
+    void MoveTransform(Vector2 targetpos, bool useDotween, float duration = 0f, TweenCallback action = null) 
     {
         if (useDotween)
         {
-            transform.DOMove(targetpos, duration);
+            transform.DOMove(targetpos, duration).OnComplete(action); 
         }
         else
         {
             transform.position = targetpos;
         }
-
 
     }
 
