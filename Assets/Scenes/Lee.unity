@@ -1786,22 +1786,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceSO: {fileID: 11400000, guid: 712d5069c36119b45aa72309694b7cf6, type: 2}
-  spawnPositions:
-  - {x: -2.4, y: 0.2}
-  - {x: -1.2, y: 0.2}
-  - {x: 0, y: 0.2}
-  - {x: 1.2, y: 0.2}
-  - {x: 2.4, y: 0.2}
-  - {x: -2.4, y: -1}
-  - {x: -1.2, y: -1}
-  - {x: 0, y: -1}
-  - {x: 1.2, y: -1}
-  - {x: 2.4, y: -1}
-  - {x: -2.4, y: -2.2}
-  - {x: -1.2, y: -2.2}
-  - {x: 0, y: -2.2}
-  - {x: 1.2, y: -2.2}
-  - {x: 2.4, y: -2.2}
   serializeDiceDatas:
   - index: 0
     isFull: 0
@@ -3532,11 +3516,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1188957885}
   - {fileID: 912527205}
   - {fileID: 7948858}
   - {fileID: 92854060}
   - {fileID: 993731928}
-  - {fileID: 1188957885}
   - {fileID: 1950230875}
   - {fileID: 1762320612}
   - {fileID: 1518658444}
