@@ -11,13 +11,16 @@ public class DiceDate
     public Color color;
 }
 
-    [CreateAssetMenu(fileName = "DiceSO", menuName = "Scriptable Object/DiceSO")]
+[CreateAssetMenu(fileName = "DiceSO", menuName = "Scriptable Object/DiceSO")]
+public class DiceSO : ScriptableObject
+{
+    public DiceDate[] diceDates;
+    [SerializeField] Vector2[] spawnPositions;
 
-    public class DiceSO : ScriptableObject
-    {
-        public DiceDate[] diceDates;
-
-        public DiceDate GetDiceDate(int code) => Array.Find(diceDates, x => x.code == code);
+    public DiceDate GetDiceDate(int code) => Array.Find(diceDates, x => x.code == code);
 
     public DiceDate GetRandomDiceData() => diceDates[UnityEngine.Random.Range(0, diceDates.Length)];
-    }
+
+    public Vector2 GetspawnPositions(int index) => spawnPositions[index];
+
+}
