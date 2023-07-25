@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour
 
     public DiceSO diceSO;
     [SerializeField] Vector2[] spawnPositions;
-    [SerializeField] SerializeDiceData[] serializeDiceDatas; //모든 주사위 정보 직렬화   
+    [SerializeField] SerializeDiceData[] serializeDiceDatas; //모든 주사위 정보 직렬화 
+
+    
+    
+    
     
     void Update()
     {
@@ -33,8 +37,8 @@ public class GameManager : MonoBehaviour
         var randDiceData = diceSO.GetRandomDiceData();
         var dice = ObjectPooler.Inst.SpawnFromPool("dice", randPos, Utils.QI).GetComponent<Dice>();
 
-        var serializeDiceData = new SerializeDiceData(randIndex, true, diceSO.GetRandomDiceData().code, level);
-        dice.SetupDice(serializeDiceData);
+        var serializeDiceData = new SerializeDiceData(randIndex, true, diceSO.GetRandomDiceData().code, 1);
+        dice.SetupSlot(serializeDiceData);
         serializeDiceDatas[randIndex] = serializeDiceData;
 
         return true;
@@ -42,17 +46,19 @@ public class GameManager : MonoBehaviour
 
     public void SpawnBtnClick()
     {
-        TryRandomSpawn(1);
+        TryRandomSpawn();
     }
 
     public Vector2 GetspawnPositions(int index) => spawnPositions[index];
 
     public GameObject[] GetRaycastAll(int layerMask)
-    {      
-        var mousePos = Utils.Mousepos;
-        mousePos.z = -100f;
-        RaycastHit2D[] raycastHit2Ds = Physics2D.RaycastAll(mousePos, Vector3.forward, float.MaxValue, 1 << layerMask);
-        var results = Array.ConvertAll(raycastHit2Ds, x => x.collider.gameObject);
-        return results;      
+    {
+       
+            var mousePos = Utils.Mousepos;
+            mousePos.z = -100f;
+            RaycastHit2D[] raycastHit2Ds = Physics2D.RaycastAll(mousePos, Vector3.forward, float.MaxValue, 1 << layerMask);
+            var results = Array.ConvertAll(raycastHit2Ds, x => x.collider.gameObject);
+            return results;  
+        
     }
 }

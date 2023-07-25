@@ -15,8 +15,9 @@ public class Dice : MonoBehaviour
     [Header("Values")]
     public SerializeDiceData serializeDiceData;
     [SerializeField] UnityEngine.Transform[] dots;
+    [SerializeField] int level; //1~6±îÁö
 
-    public void SetupDice(SerializeDiceData serializeDiceData)
+    public void SetupSlot(SerializeDiceData serializeDiceData)
     {
         this.serializeDiceData = serializeDiceData;
         var diceData = GameManager.Inst.diceSO.GetDiceDate(serializeDiceData.code);
@@ -54,7 +55,7 @@ public class Dice : MonoBehaviour
         }
     }
 
-     
+
     void OnDisable()
     {
         serializeDiceData = null;
@@ -65,6 +66,28 @@ public class Dice : MonoBehaviour
             dots[i].GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
+
+
+    void Start()
+    {
+        SetDots(1);
+    }
+
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Keypad1))
+    //        SetDots(1);
+    //    if (Input.GetKeyDown(KeyCode.Keypad2))
+    //        SetDots(2);
+    //    if (Input.GetKeyDown(KeyCode.Keypad3))
+    //        SetDots(3);
+    //    if (Input.GetKeyDown(KeyCode.Keypad4))
+    //        SetDots(4);
+    //    if (Input.GetKeyDown(KeyCode.Keypad5))
+    //        SetDots(5);
+    //    if (Input.GetKeyDown(KeyCode.Keypad6))
+    //        SetDots(6);
+    //}
 
     public void OnMouseDown()
     {
@@ -77,7 +100,8 @@ public class Dice : MonoBehaviour
     }
 
     public void OnMouseUp()
-    {    
+    {
+       
         MoveTransform(GameManager.Inst.GetspawnPositions(serializeDiceData.index), true, 0.2f, () => order.SetMostFrontOrder(false));
 
         GameObject[] raycastAll = GameManager.Inst.GetRaycastAll(Utils.DICE_LAYER);
@@ -86,8 +110,8 @@ public class Dice : MonoBehaviour
         if (targetDiceObj != null)
         {
             var targetDice = targetDiceObj.GetComponent<Dice>();
-            if(serializeDiceData.code == targetDice.serializeDiceData.code && 
-               serializeDiceData.level == targetDice.serializeDiceData.level)
+            if(serializeDiceData.code == targetDice.serializeDiceData.code
+                && serializeDiceData.level == targetDice.serializeDiceData.level)
             {
                 int nextLevel = serializeDiceData.level + 1;
                 if (nextLevel > Utils.MAX_DICE_LEVEL)
@@ -96,11 +120,13 @@ public class Dice : MonoBehaviour
                 var targetSerializeDiceData = targetDice.serializeDiceData;
                 targetSerializeDiceData.code = GameManager.Inst.diceSO.GetRandomDiceData().code;
                 targetSerializeDiceData.level = nextLevel;
-                targetDice.SetupDice(targetSerializeDiceData);
+                targetDice.SetupSlot(targetSerializeDiceData);
                 gameObject.SetActive(false);
             }
         }
     }
+
+    
 
     void MoveTransform(Vector2 targetpos, bool useDotween, float duration = 0f, TweenCallback action = null) 
     {
@@ -112,5 +138,7 @@ public class Dice : MonoBehaviour
         {
             transform.position = targetpos;
         }
+
     }
+
 }

@@ -19,10 +19,12 @@ public class SerializeDiceData
     }
 }
 
+
 [System.Serializable]
 public class Tile
 {
     public Vector2 startPos;
+    
 }
 
 public class Utils
@@ -40,5 +42,7 @@ public class Utils
             return result;  
         }
     }
-    public const int DICE_LAYER = 6;    
+
+    public const int DICE_LAYER = 6;
+
 }
