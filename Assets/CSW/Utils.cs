@@ -42,7 +42,5 @@ public class Utils
             return result;  
         }
     }
-
     public const int DICE_LAYER = 6;
-
 }
