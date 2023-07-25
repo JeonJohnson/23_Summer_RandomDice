@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,11 +19,15 @@ public class SerializeDiceData
     }
 }
 
+[System.Serializable]
+public class Tile
+{
+    public Vector2 startPos;
+}
 
 public class Utils
 {
     public const int MAX_DICE_LEVEL = 6;
-    public const int DICE_LAYER = 6;
 
     public static readonly Quaternion QI = Quaternion.identity;
 
@@ -37,24 +40,5 @@ public class Utils
             return result;  
         }
     }
-
-    public static GameObject[] GetRaycastAll(int layerMask)
-    {
-        var mousePos = Mousepos;
-        mousePos.z = -100f;
-        var raycastHit2D = Physics2D.RaycastAll(mousePos, Vector3.forward, float.MaxValue, 1 << layerMask);
-        return Array.ConvertAll(raycastHit2D, x => x.collider.gameObject);
-    }
-
-    public static Vector2[] positions(int level) =>
-        level switch
-        {
-            1 => new Vector2[] { Vector2.zero },
-            2 => new Vector2[] { new Vector2(-0.36f, -0.36f), new Vector2(0.36f, 0.36f) },
-            3 => new Vector2[] { new Vector2(-0.36f, -0.36f), Vector2.zero, new Vector2(0.36f, 0.36f) },
-            4 => new Vector2[] { new Vector2(-0.36f, -0.36f), new Vector2(-0.36f, 0.36f), new Vector2(0.36f, -0.36f), new Vector2(0.36f, 0.36f) },
-            5 => new Vector2[] { new Vector2(-0.36f, -0.36f), new Vector2(-0.36f, 0.36f), Vector2.zero, new Vector2(0.36f, -0.36f), new Vector2(0.36f, 0.36f) },
-            6 => new Vector2[] { new Vector2(-0.36f, -0.36f), new Vector2(0.36f, 0f), new Vector2(0.36f, -0.36f), new Vector2(-0.36f, 0.36f), new Vector2(-0.36f, 0f), new Vector2(0.36f, 0.36f) },
-            _ => new Vector2[] { Vector2.zero },
-        };
+    public const int DICE_LAYER = 6;    
 }
