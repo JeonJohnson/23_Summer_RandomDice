@@ -19,5 +19,5 @@ public class DiceDate
 
         public DiceDate GetDiceDate(int code) => Array.Find(diceDates, x => x.code == code);
 
-    public DiceDate GetRandomDiceData() => diceDates[UnityEngine.Random.Range(0, diceDates.Length)];
+        public DiceDate GetRandomDiceData() => diceDates[UnityEngine.Random.Range(0, diceDates.Length)];
     }

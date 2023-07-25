@@ -10,7 +10,7 @@ public class Order : MonoBehaviour
     [SerializeField] string sortingLayerName;
     int originOrder;
 
-    public void setOriginOrder(int originOrder)
+    public void SetOriginOrder(int originOrder)
     {
         this.originOrder = originOrder;
         SetOrder(originOrder);
@@ -24,10 +24,17 @@ public class Order : MonoBehaviour
     public void SetOrder(int order)
     {
         int mulOrder = order * 10;
+
         foreach (var renderer in backRenderers)
         {
             renderer.sortingLayerName = sortingLayerName;
-            renderer.sortingOrder = mulOrder + 1; 
+            renderer.sortingOrder = mulOrder; 
+        }
+
+        foreach (var renderer in middleRenderers)
+        {
+            renderer.sortingLayerName = sortingLayerName;
+            renderer.sortingOrder = mulOrder + 1;
         }
     }
 
