@@ -86,8 +86,8 @@ public class Dice : MonoBehaviour
         if (targetDiceObj != null)
         {
             var targetDice = targetDiceObj.GetComponent<Dice>();
-            if(serializeDiceData.code == targetDice.serializeDiceData.code
-                && serializeDiceData.level == targetDice.serializeDiceData.level)
+            if(serializeDiceData.code == targetDice.serializeDiceData.code && 
+               serializeDiceData.level == targetDice.serializeDiceData.level)
             {
                 int nextLevel = serializeDiceData.level + 1;
                 if (nextLevel > Utils.MAX_DICE_LEVEL)

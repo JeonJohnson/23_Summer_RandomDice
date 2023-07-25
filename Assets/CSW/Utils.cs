@@ -24,7 +24,6 @@ public class SerializeDiceData
 public class Tile
 {
     public Vector2 startPos;
-    
 }
 
 public class Utils
