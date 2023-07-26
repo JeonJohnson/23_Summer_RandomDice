@@ -29,6 +29,7 @@ public class Tile
 public class Utils
 {
     public const int MAX_DICE_LEVEL = 6;
+    public const int DICE_LAYER = 6;
 
     public static readonly Quaternion QI = Quaternion.identity;
 
@@ -38,8 +39,15 @@ public class Utils
         {
             var result = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             result.z = 0;
-            return result;  
+            return result;
         }
     }
-    public const int DICE_LAYER = 6;
+
+    public static readonly WaitForSeconds delayAttack = new WaitForSeconds(0.5f);
+
+    public static int TotalAttackDamage(int basicAttackDamage, int level)
+    {
+        int result = basicAttackDamage + level * 5;
+        return result;
+    }
 }

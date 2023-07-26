@@ -5,6 +5,7 @@ using DG.Tweening;
 using System;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 using UnityEngine.UIElements;
+using UnityEditor.Tilemaps;
 
 public class Dice : MonoBehaviour
 {
@@ -15,6 +16,42 @@ public class Dice : MonoBehaviour
     [Header("Values")]
     public SerializeDiceData serializeDiceData;
     [SerializeField] UnityEngine.Transform[] dots;
+
+    public GameObject bullets;
+    [SerializeField] UnityEngine.Transform[] firePositions;
+    public int poolSize;
+    public List<GameObject> bulletObjectPool;
+
+    float fireTime = 0.5f;
+    float currentTime;
+
+    void Start()
+    {
+        bulletObjectPool = new List<GameObject>();
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject bullet = Instantiate(bullets);
+            bulletObjectPool.Add(bullet);
+            bullet.SetActive(false);
+        }
+    }
+
+    void Update()
+    {     
+        currentTime += Time.deltaTime;
+
+        if (currentTime > fireTime)
+        {
+            if (bulletObjectPool.Count > 0)
+            {
+                GameObject bullet = bulletObjectPool[0];
+                bullet.SetActive(true);
+                bulletObjectPool.Remove(bullet);
+                bullet.transform.position = transform.position;
+            }
+            currentTime = 0;
+        }
+    }
 
     public void SetupSlot(SerializeDiceData serializeDiceData)
     {
@@ -53,7 +90,6 @@ public class Dice : MonoBehaviour
             dots[i].localPosition = positions[i];
         }
     }
-
 
     void OnDisable()
     {
