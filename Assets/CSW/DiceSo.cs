@@ -13,11 +13,11 @@ public class DiceDate
 
     [CreateAssetMenu(fileName = "DiceSO", menuName = "Scriptable Object/DiceSO")]
 
-    public class DiceSO : ScriptableObject
-    {
-        public DiceDate[] diceDates;
+public class DiceSO : ScriptableObject
+{
+    public DiceDate[] diceDates;
 
-        public DiceDate GetDiceDate(int code) => Array.Find(diceDates, x => x.code == code);
+    public DiceDate GetDiceDate(int code) => Array.Find(diceDates, x => x.code == code);
 
-        public DiceDate GetRandomDiceData() => diceDates[UnityEngine.Random.Range(0, diceDates.Length)];
-    }
+    public DiceDate GetRandomDiceData() => diceDates[UnityEngine.Random.Range(0, diceDates.Length)];
+}

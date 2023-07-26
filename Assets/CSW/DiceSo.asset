@@ -13,24 +13,24 @@ MonoBehaviour:
   m_Name: DiceSO
   m_EditorClassIdentifier: 
   diceDates:
-  - code: 0
+  - code: 1
     sprite: {fileID: 21300000, guid: 6f106cfbf335c81498a727d351f3f42e, type: 3}
     color: {r: 0.9176471, g: 0.16470589, b: 0.039215688, a: 1}
-  - code: 1
+  - code: 2
     sprite: {fileID: 21300000, guid: 6bbd69b0d7077da4191cf33742474d3d, type: 3}
     color: {r: 0.78823537, g: 0.10980393, b: 0.18431373, a: 1}
-  - code: 2
+  - code: 3
     sprite: {fileID: 21300000, guid: 7f26f229e75297440a607f7ccb6a5938, type: 3}
     color: {r: 0.5019608, g: 0.8196079, b: 0.8980393, a: 1}
-  - code: 3
+  - code: 4
     sprite: {fileID: 21300000, guid: 7956e7ace04df0847b86c64d55e29320, type: 3}
     color: {r: 0.9294118, g: 0.7058824, b: 0.21960786, a: 1}
-  - code: 4
+  - code: 5
     sprite: {fileID: 21300000, guid: de189584a2f24a0408d97ea4baf1006a, type: 3}
     color: {r: 0.20000002, g: 0.6509804, b: 0, a: 1}
-  - code: 5
+  - code: 6
     sprite: {fileID: 21300000, guid: add752ab17008714086c6e2ee8afe84c, type: 3}
     color: {r: 0.6901961, g: 0.2392157, b: 0.13725491, a: 1}
-  - code: 6
+  - code: 7
     sprite: {fileID: 21300000, guid: 38fcc5524e3c7bc4391639f6856a1b4d, type: 3}
     color: {r: 0.003921569, g: 0.8313726, b: 0.8470589, a: 0.69411767}

@@ -19,6 +19,13 @@ public class SerializeDiceData
     }
 }
 
+
+[System.Serializable]
+public class Tile
+{
+    public Vector2 startPos;
+}
+
 public class Utils
 {
     public const int MAX_DICE_LEVEL = 6;
@@ -34,4 +41,5 @@ public class Utils
             return result;  
         }
     }
+    public const int DICE_LAYER = 6;
 }
