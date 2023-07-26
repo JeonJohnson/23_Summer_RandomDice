@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class Enemy : MonoBehaviour {
     bool isLive;
 
     Rigidbody2D rigid;
+    Text text;
+    Spawner spawner;
 
     public Transform[] wayArray;
     public int targetWay = 2;
@@ -19,9 +22,14 @@ public class Enemy : MonoBehaviour {
     void Awake() {
         rigid = GetComponent<Rigidbody2D>();
         wayArray = GameObject.Find("Way").GetComponentsInChildren<Transform>();
+        text = GetComponentInChildren<Text>();
+        spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
     }
 
     void FixedUpdate() {
+        if (!isLive) return;
+
+        DrawText();
         target = wayArray[targetWay].position;
         Vector2 dirVec = target - rigid.position;
         Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
@@ -50,14 +58,22 @@ public class Enemy : MonoBehaviour {
         rigid.simulated = true;
         health = maxHealth;
         targetWay = 2;
+        DrawText();
     }
 
     public void Init() {
         health = maxHealth;
         targetWay = 2;
+        DrawText();
     }
 
     void Dead() {
         gameObject.SetActive(false);
+        spawner.curCount -= 1;
+        if (spawner.curCount == 0) StopCoroutine("SpawnEnemy");
+    }
+
+    void DrawText() {
+        text.text = health.ToString();
     }
 }

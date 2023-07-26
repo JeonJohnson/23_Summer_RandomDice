@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour {
     public PoolManager pool;
     SpriteRenderer spriter;
 
+    public int count;
     public int curCount;
     public int maxCount;
 
@@ -18,7 +19,8 @@ public class Spawner : MonoBehaviour {
     }
 
     IEnumerator SpawnEnemy() {
-        while (curCount != maxCount) {
+        count = 0;
+        while (count < maxCount) {
             GameObject enemy = pool.Get(0);
             enemy.transform.position = spawnPoint.position;
             enemy.GetComponent<Enemy>().Init();
@@ -26,6 +28,7 @@ public class Spawner : MonoBehaviour {
             spriter.sortingOrder = maxCount - curCount +1;
             yield return new WaitForSeconds(delay);
             curCount += 1;
+            count += 1;
         }
     }
 }
