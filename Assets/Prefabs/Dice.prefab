@@ -70,7 +70,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2129125845
+<<<<<<< Updated upstream
+  m_SortingLayerID: -1088997261
+=======
+  m_SortingLayerID: 1426238663
+>>>>>>> Stashed changes
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 56b4524c603911d4ca52bbf7f2083e4d, type: 3}
@@ -154,7 +158,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2129125845
+<<<<<<< Updated upstream
+  m_SortingLayerID: -1088997261
+=======
+  m_SortingLayerID: 1426238663
+>>>>>>> Stashed changes
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 56b4524c603911d4ca52bbf7f2083e4d, type: 3}
@@ -238,7 +246,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2129125845
+<<<<<<< Updated upstream
+  m_SortingLayerID: -1088997261
+=======
+  m_SortingLayerID: 1426238663
+>>>>>>> Stashed changes
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 56b4524c603911d4ca52bbf7f2083e4d, type: 3}
@@ -322,7 +334,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2129125845
+<<<<<<< Updated upstream
+  m_SortingLayerID: -1088997261
+=======
+  m_SortingLayerID: 1426238663
+>>>>>>> Stashed changes
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 56b4524c603911d4ca52bbf7f2083e4d, type: 3}
@@ -406,7 +422,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2129125845
+<<<<<<< Updated upstream
+  m_SortingLayerID: -1088997261
+=======
+  m_SortingLayerID: 1426238663
+>>>>>>> Stashed changes
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 56b4524c603911d4ca52bbf7f2083e4d, type: 3}
@@ -490,7 +510,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2129125845
+<<<<<<< Updated upstream
+  m_SortingLayerID: -1088997261
+=======
+  m_SortingLayerID: 1426238663
+>>>>>>> Stashed changes
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 56b4524c603911d4ca52bbf7f2083e4d, type: 3}
@@ -514,10 +538,17 @@ GameObject:
   m_Component:
   - component: {fileID: 6736493169596867470}
   - component: {fileID: 8355241358843077750}
+<<<<<<< Updated upstream
   - component: {fileID: 6920778127599223427}
   - component: {fileID: 568871294436050524}
   - component: {fileID: 4882606604471157061}
   m_Layer: 6
+=======
+  - component: {fileID: 4706788550561293096}
+  - component: {fileID: 568871294436050524}
+  - component: {fileID: -8488451120188695395}
+  m_Layer: 0
+>>>>>>> Stashed changes
   m_Name: Dice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +614,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2129125845
+<<<<<<< Updated upstream
+  m_SortingLayerID: -1088997261
+=======
+  m_SortingLayerID: 1426238663
+>>>>>>> Stashed changes
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6bbd69b0d7077da4191cf33742474d3d, type: 3}
@@ -597,7 +632,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< Updated upstream
 --- !u!61 &6920778127599223427
+=======
+--- !u!61 &4706788550561293096
+>>>>>>> Stashed changes
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -668,8 +707,11 @@ MonoBehaviour:
   - {fileID: 1971961630004949187}
   - {fileID: 4245361194551846270}
   - {fileID: 995465111810936943}
-  level: 1
+<<<<<<< Updated upstream
 --- !u!114 &4882606604471157061
+=======
+--- !u!114 &-8488451120188695395
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -678,7 +720,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5775828713984558796}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: d8a286d3e3c89f34f8b8b8ce9651f848, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: a49b282d6bab16b4bb3b5092abbe6f53, type: 3}
+>>>>>>> Stashed changes
   m_Name: 
   m_EditorClassIdentifier: 
   backRenderers:
@@ -690,4 +736,8 @@ MonoBehaviour:
   - {fileID: 1491888817642267047}
   - {fileID: 75782659813056607}
   - {fileID: 272304585213154392}
+<<<<<<< Updated upstream
   sortingLayerName: 
+=======
+  sortingLayerName: Dice
+>>>>>>> Stashed changes

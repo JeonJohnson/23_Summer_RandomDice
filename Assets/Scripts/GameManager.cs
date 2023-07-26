@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     }
 
     public Vector2 GetspawnPositions(int index) => spawnPositions[index];
+<<<<<<< Updated upstream
 
     public GameObject[] GetRaycastAll(int layerMask)
     {      
@@ -56,4 +57,6 @@ public class GameManager : MonoBehaviour
         var results = Array.ConvertAll(raycastHit2Ds, x => x.collider.gameObject);
         return results;          
     }
+=======
+>>>>>>> Stashed changes
 }
