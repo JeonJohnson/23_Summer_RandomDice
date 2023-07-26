@@ -16,7 +16,7 @@ public class Dice : MonoBehaviour
     public SerializeDiceData serializeDiceData;
     [SerializeField] UnityEngine.Transform[] dots;
 
-    public DiceDate diceDate => GameManager.Inst.diceSO.GetDiceDate(serializeDiceData.code);
+    public DiceDate diceDate => GameManager.Inst.diceSo.GetDiceDate(serializeDiceData.code);
 
     //근희 테스트 
     public int curIndex;
@@ -26,7 +26,7 @@ public class Dice : MonoBehaviour
     public void SetupSlot(SerializeDiceData serializeDiceData)
     {
         this.serializeDiceData = serializeDiceData;
-        var diceData = GameManager.Inst.diceSO.GetDiceDate(serializeDiceData.code);
+        var diceData = GameManager.Inst.diceSo.GetDiceDate(serializeDiceData.code);
         spriteRenderer.sprite = diceData.sprite;
         SetDots(serializeDiceData.level);
 
@@ -102,7 +102,7 @@ public class Dice : MonoBehaviour
                     return;
                 
                 var targetSerializeDiceData = targetDice.serializeDiceData;
-                targetSerializeDiceData.code = GameManager.Inst.diceSO.GetRandomDiceData().code;
+                targetSerializeDiceData.code = GameManager.Inst.diceSo.GetRandomDiceData().code;
                 targetSerializeDiceData.level = nextLevel;
                 targetDice.SetupSlot(targetSerializeDiceData);
                 gameObject.SetActive(false);
