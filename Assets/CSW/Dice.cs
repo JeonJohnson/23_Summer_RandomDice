@@ -16,6 +16,8 @@ public class Dice : MonoBehaviour
     public SerializeDiceData serializeDiceData;
     [SerializeField] UnityEngine.Transform[] dots;
 
+    public DiceDate diceDate => GameManager.Inst.diceSO.GetDiceDate(serializeDiceData.code);
+
     public void SetupSlot(SerializeDiceData serializeDiceData)
     {
         this.serializeDiceData = serializeDiceData;
@@ -103,6 +105,8 @@ public class Dice : MonoBehaviour
     }
 
     void MoveTransform(Vector2 targetpos, bool useDotween, float duration = 0f, TweenCallback action = null) 
+
+
     {
         if (useDotween)
         {
@@ -113,4 +117,8 @@ public class Dice : MonoBehaviour
             transform.position = targetpos;
         }
     }
+
+
+
+
 }

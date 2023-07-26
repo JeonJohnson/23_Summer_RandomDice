@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using UnityEngine;
 
 [System.Serializable]
@@ -42,4 +43,13 @@ public class Utils
         }
     }
     public const int DICE_LAYER = 6;
+
+
+   public static readonly WaitForSeconds delayAttack = new WaitForSeconds(0.5f);   
+    
+    public static int TotalAttackDamage(int basicAttackDamage, int level)
+    {
+        int result = basicAttackDamage + level * 3;
+        return result;
+    }
 }

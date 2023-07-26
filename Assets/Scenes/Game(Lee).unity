@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 14851863}
   - component: {fileID: 14851862}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,6 +157,7 @@ MonoBehaviour:
   count: 0
   curCount: 0
   maxCount: 5
+  isWavePlayed: 0
   delay: 0.75
 --- !u!4 &14851863
 Transform:
