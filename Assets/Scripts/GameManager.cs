@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
 
     public Vector2 GetspawnPositions(int index) => spawnPositions[index];
 
-
     public GameObject[] GetRaycastAll(int layerMask)
     {      
         var mousePos = Utils.Mousepos;
