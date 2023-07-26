@@ -8,9 +8,23 @@ using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Inst { get; private set; }
-    void Awake() => Inst = this;
+    void Awake()
+    {
+        Inst = this;
 
-    public DiceSO diceSO;
+        //근희 테스트 
+        serializeDiceDatas = new SerializeDiceData[15];
+
+        for (int i = 0; i < serializeDiceDatas.Length; ++i)
+        {
+            serializeDiceDatas[i] = new SerializeDiceData(i);
+            
+        }
+        //근희 테스트 
+    }
+
+
+    public DiceSo diceSo;
     [SerializeField] Vector2[] spawnPositions;
     [SerializeField] public SerializeDiceData[] serializeDiceDatas; //모든 주사위 정보 직렬화 
 
@@ -31,10 +45,10 @@ public class GameManager : MonoBehaviour
         
         int randIndex = emptyserializeDiceData[Random.Range(0, emptyserializeDiceData.Length)].index;
         Vector3 randPos = spawnPositions[randIndex];
-        var randDiceData = diceSO.GetRandomDiceData();
+        var randDiceData = diceSo.GetRandomDiceData();
         var dice = ObjectPooler.Inst.SpawnFromPool("dice", randPos, Utils.QI).GetComponent<Dice>();
 
-        var serializeDiceData = new SerializeDiceData(randIndex, true, diceSO.GetRandomDiceData().code, level);
+        var serializeDiceData = new SerializeDiceData(randIndex, true, diceSo.GetRandomDiceData().code, level);
         dice.SetupSlot(serializeDiceData);
         serializeDiceDatas[randIndex] = serializeDiceData;
 

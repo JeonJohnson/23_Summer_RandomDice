@@ -18,6 +18,14 @@ public class SerializeDiceData
         this.code = code;
         this.level = level;
     }
+
+    public SerializeDiceData(int index)
+    {
+        this.index = index;
+        this.isFull = false;
+        this.code = 1;
+        this.level = 1;
+    }
 }
 
 

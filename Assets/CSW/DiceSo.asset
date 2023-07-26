@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5372eb1be4c1de48afab6938b758979, type: 3}
-  m_Name: DiceSO
+  m_Name: DiceSo
   m_EditorClassIdentifier: 
   diceDates:
   - code: 1

@@ -12,9 +12,9 @@ public class DiceDate
     public int basicAttackDamage;
 }
 
-    [CreateAssetMenu(fileName = "DiceSO", menuName = "Scriptable Object/DiceSO")]
+    [CreateAssetMenu(fileName = "DiceSo", menuName = "Scriptable Object/DiceSo")]
 
-public class DiceSO : ScriptableObject
+public class DiceSo : ScriptableObject
 {
     public DiceDate[] diceDates;
 
