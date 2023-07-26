@@ -9,7 +9,6 @@ public class DiceDate
     public int code;
     public Sprite sprite;
     public Color color;
-    public int basicAttackDamage;
 }
 
     [CreateAssetMenu(fileName = "DiceSO", menuName = "Scriptable Object/DiceSO")]

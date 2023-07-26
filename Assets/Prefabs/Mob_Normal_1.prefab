@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9220370825796909089}
   - component: {fileID: 5626736922762010345}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Mob_Normal_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  targetWay: 2
+  targetWay: 1
 --- !u!50 &5626736922762010345
 Rigidbody2D:
   serializedVersion: 4
