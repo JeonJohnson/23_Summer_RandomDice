@@ -12,15 +12,18 @@ public class Spawner : MonoBehaviour {
     public int curCount;
     public int maxCount;
 
+    public bool isWavePlayed;
+
     public float delay = 1f;
 
     public void Spawn() {
-        StartCoroutine("SpawnEnemy");
+        if (!isWavePlayed) StartCoroutine("SpawnEnemy");
     }
 
     IEnumerator SpawnEnemy() {
         count = 0;
-        while (count < maxCount) {
+        isWavePlayed = true;
+        while (count < maxCount && isWavePlayed) {
             GameObject enemy = pool.Get(0);
             enemy.transform.position = spawnPoint.position;
             enemy.GetComponent<Enemy>().Init();

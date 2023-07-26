@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour {
         rigid = GetComponent<Rigidbody2D>();
         wayArray = GameObject.Find("Way").GetComponentsInChildren<Transform>();
         text = GetComponentInChildren<Text>();
-        spawner = GameObject.Find("Spawner").GetComponent<Spawner>();
+        spawner = GameObject.Find("EnemySpawner").GetComponent<Spawner>();
     }
 
     void FixedUpdate() {
@@ -72,13 +72,19 @@ public class Enemy : MonoBehaviour {
     void Dead() {
         gameObject.SetActive(false);
         spawner.curCount -= 1;
-        if (spawner.curCount == 0) StopCoroutine("SpawnEnemy");
+        if (spawner.curCount == 0) {
+            StopCoroutine("SpawnEnemy");
+            spawner.isWavePlayed = false;
+        }
     }
 
     void Arrive(int value) {
         gameObject.SetActive(false);
         spawner.curCount -= 1;
-        if (spawner.curCount == 0) StopCoroutine("SpawnEnemy");
+        if (spawner.curCount == 0) {
+            StopCoroutine("SpawnEnemy");
+            spawner.isWavePlayed = false;
+        }
         Player.instance.takePlayerDamage(value);
     }
 
