@@ -18,15 +18,10 @@ public class Dice : MonoBehaviour
 
     public DiceDate diceDate => GameManager.Inst.diceSO.GetDiceDate(serializeDiceData.code);
 
-<<<<<<< Updated upstream
     //근희 테스트 
     public int curIndex;
     //근희 테스트 
-=======
-    [SerializeField] SerializeDiceData serializeDiceData;
-    [SerializeField] Transform[] dots;
 
->>>>>>> Stashed changes
 
     public void SetupSlot(SerializeDiceData serializeDiceData)
     {
@@ -66,10 +61,7 @@ public class Dice : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 
     void OnDisable()
     {
@@ -81,10 +73,6 @@ public class Dice : MonoBehaviour
             dots[i].GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
     public void OnMouseDown()
     {
@@ -127,11 +115,7 @@ public class Dice : MonoBehaviour
     }
     
 
-<<<<<<< Updated upstream
     void MoveTransform(Vector2 targetpos, bool useDotween, float duration = 0f, TweenCallback action = null) 
-=======
-    void MoveTransform(Vector2 targetpos, bool useDotween, float duration = 0f) 
->>>>>>> Stashed changes
     {
         if (useDotween)
         {
@@ -142,11 +126,4 @@ public class Dice : MonoBehaviour
             transform.position = targetpos;
         }
     }
-<<<<<<< Updated upstream
-
-
-
-
-=======
->>>>>>> Stashed changes
 }
