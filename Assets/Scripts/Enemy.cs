@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
     public float maxHealth;
 
     bool isLive;
+    bool isBoss;
 
     Rigidbody2D rigid;
     Text text;
@@ -47,7 +48,8 @@ public class Enemy : MonoBehaviour {
                     targetWay = 4;
                     break;
                 case 4:
-                    Dead();
+                    if (isBoss) Arrive(3);
+                    else Arrive(1);
                     break;
             }
         }
@@ -73,7 +75,23 @@ public class Enemy : MonoBehaviour {
         if (spawner.curCount == 0) StopCoroutine("SpawnEnemy");
     }
 
+    void Arrive(int value) {
+        gameObject.SetActive(false);
+        spawner.curCount -= 1;
+        if (spawner.curCount == 0) StopCoroutine("SpawnEnemy");
+        Player.instance.takePlayerDamage(value);
+    }
+
     void DrawText() {
         text.text = health.ToString();
+    }
+
+    public void takeEnemyDamage(int dmg, Enemy target) {
+        if (target.health - dmg > 0) {
+            target.health -= dmg;
+        } else {
+            target.health = 0;
+            Dead();
+        }
     }
 }
