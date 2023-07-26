@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public DiceSO diceSO;
     [SerializeField] Vector2[] spawnPositions;
-    [SerializeField] SerializeDiceData[] serializeDiceDatas; //¸ðµç ÁÖ»çÀ§ Á¤º¸ Á÷·ÄÈ­ 
+    [SerializeField] public SerializeDiceData[] serializeDiceDatas; //ëª¨ë“  ì£¼ì‚¬ìœ„ ì •ë³´ ì§ë ¬í™” 
 
     void Update()
     {
@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
         dice.SetupSlot(serializeDiceData);
         serializeDiceDatas[randIndex] = serializeDiceData;
 
+        //ê·¼í¬ í…ŒìŠ¤íŠ¸ 
+        dice.curIndex = randIndex;
+        //ê·¼í¬ í…ŒìŠ¤íŠ¸ 
+
         return true;
     }
 
@@ -47,7 +51,6 @@ public class GameManager : MonoBehaviour
     }
 
     public Vector2 GetspawnPositions(int index) => spawnPositions[index];
-
 
     public GameObject[] GetRaycastAll(int layerMask)
     {      
