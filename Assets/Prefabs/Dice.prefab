@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 4706788550561293096}
   - component: {fileID: 568871294436050524}
   - component: {fileID: 7312506002065286241}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
