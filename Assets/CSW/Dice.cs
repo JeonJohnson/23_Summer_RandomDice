@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -18,6 +18,9 @@ public class Dice : MonoBehaviour
 
     public DiceDate diceDate => GameManager.Inst.diceSO.GetDiceDate(serializeDiceData.code);
 
+    //근희 테스트 
+    public int curIndex;
+    //근희 테스트 
 
     public void SetupSlot(SerializeDiceData serializeDiceData)
     {
@@ -39,7 +42,7 @@ public class Dice : MonoBehaviour
             dots[i].gameObject.SetActive(i < level);
         }
 
-        //��ġ
+        //위치
         Vector2[] positions = new Vector2[1];
         switch (level)
         {
@@ -103,6 +106,10 @@ public class Dice : MonoBehaviour
                 targetSerializeDiceData.level = nextLevel;
                 targetDice.SetupSlot(targetSerializeDiceData);
                 gameObject.SetActive(false);
+
+                //근희 테스트 
+                GameManager.Inst.serializeDiceDatas[curIndex].isFull = false;
+                //근희 테스트 
             }
         }
     }

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public DiceSO diceSO;
     [SerializeField] Vector2[] spawnPositions;
-    [SerializeField] SerializeDiceData[] serializeDiceDatas; //¸ğµç ÁÖ»çÀ§ Á¤º¸ Á÷·ÄÈ­ 
+    [SerializeField] public SerializeDiceData[] serializeDiceDatas; //ëª¨ë“  ì£¼ì‚¬ìœ„ ì •ë³´ ì§ë ¬í™” 
 
     void Update()
     {
@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
         var serializeDiceData = new SerializeDiceData(randIndex, true, diceSO.GetRandomDiceData().code, level);
         dice.SetupSlot(serializeDiceData);
         serializeDiceDatas[randIndex] = serializeDiceData;
+
+        //ê·¼í¬ í…ŒìŠ¤íŠ¸ 
+        dice.curIndex = randIndex;
+        //ê·¼í¬ í…ŒìŠ¤íŠ¸ 
 
         return true;
     }
