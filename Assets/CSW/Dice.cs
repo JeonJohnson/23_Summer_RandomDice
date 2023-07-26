@@ -13,16 +13,11 @@ public class Dice : MonoBehaviour
     [SerializeField] Order order;
 
     [Header("Values")]
-<<<<<<< Updated upstream
     public SerializeDiceData serializeDiceData;
     [SerializeField] UnityEngine.Transform[] dots;
 
     public DiceDate diceDate => GameManager.Inst.diceSO.GetDiceDate(serializeDiceData.code);
-=======
-    [SerializeField] SerializeDiceData serializeDiceData;
-    [SerializeField] Transform[] dots;
-    //[SerializeField] int level; //1~6±îÁö
->>>>>>> Stashed changes
+
 
     public void SetupSlot(SerializeDiceData serializeDiceData)
     {
@@ -62,7 +57,7 @@ public class Dice : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
+
 
     void OnDisable()
     {
@@ -74,28 +69,7 @@ public class Dice : MonoBehaviour
             dots[i].GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
-=======
-    //void Start()
-    //{
-    //    SetDots(1);
-    //}
-    //
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Keypad1))
-    //        SetDots(1);
-    //    if (Input.GetKeyDown(KeyCode.Keypad2))
-    //        SetDots(2);
-    //    if (Input.GetKeyDown(KeyCode.Keypad3))
-    //        SetDots(3);
-    //    if (Input.GetKeyDown(KeyCode.Keypad4))
-    //        SetDots(4);
-    //    if (Input.GetKeyDown(KeyCode.Keypad5))
-    //        SetDots(5);
-    //    if (Input.GetKeyDown(KeyCode.Keypad6))
-    //        SetDots(6);
-    //}
->>>>>>> Stashed changes
+
 
     public void OnMouseDown()
     {
@@ -108,7 +82,6 @@ public class Dice : MonoBehaviour
     }
 
     public void OnMouseUp()
-<<<<<<< Updated upstream
     {     
         MoveTransform(GameManager.Inst.GetspawnPositions(serializeDiceData.index), true, 0.2f, () => order.SetMostFrontOrder(false));
 
@@ -133,17 +106,9 @@ public class Dice : MonoBehaviour
             }
         }
     }
+    
 
     void MoveTransform(Vector2 targetpos, bool useDotween, float duration = 0f, TweenCallback action = null) 
-
-
-=======
-    {
-        MoveTransform(GameManager.Inst.GetspawnPositions(serializeDiceData.index), true, 0.2f);
-    }
-
-    void MoveTransform(Vector2 targetpos, bool useDotween, float duration = 0f) 
->>>>>>> Stashed changes
     {
         if (useDotween)
         {
@@ -154,11 +119,8 @@ public class Dice : MonoBehaviour
             transform.position = targetpos;
         }
     }
-<<<<<<< Updated upstream
 
 
 
 
-=======
->>>>>>> Stashed changes
 }
