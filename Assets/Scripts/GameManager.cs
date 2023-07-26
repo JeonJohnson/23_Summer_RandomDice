@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Inst { get; private set; }
     void Awake() => Inst = this;
 
-    public DiceSO diceSO;
+    public DiceSo diceSo;
     [SerializeField] Vector2[] spawnPositions;
     [SerializeField] public SerializeDiceData[] serializeDiceDatas; //모든 주사위 정보 직렬화 
 
@@ -31,10 +31,10 @@ public class GameManager : MonoBehaviour
         
         int randIndex = emptyserializeDiceData[Random.Range(0, emptyserializeDiceData.Length)].index;
         Vector3 randPos = spawnPositions[randIndex];
-        var randDiceData = diceSO.GetRandomDiceData();
+        var randDiceData = diceSo.GetRandomDiceData();
         var dice = ObjectPooler.Inst.SpawnFromPool("dice", randPos, Utils.QI).GetComponent<Dice>();
 
-        var serializeDiceData = new SerializeDiceData(randIndex, true, diceSO.GetRandomDiceData().code, level);
+        var serializeDiceData = new SerializeDiceData(randIndex, true, diceSo.GetRandomDiceData().code, level);
         dice.SetupSlot(serializeDiceData);
         serializeDiceDatas[randIndex] = serializeDiceData;
 
