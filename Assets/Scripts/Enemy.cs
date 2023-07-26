@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour {
     void Dead() {
         gameObject.SetActive(false);
         spawner.curCount -= 1;
-        spawner.aliveEnemies.Remove(this);
+        Spawner.aliveEnemies.Remove(this);
         if (spawner.curCount == 0) {
             StopCoroutine("SpawnEnemy");
             spawner.isWavePlayed = false;
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour {
     void Arrive(int value) {
         gameObject.SetActive(false);
         spawner.curCount -= 1;
-        spawner.aliveEnemies.Remove(this);
+        Spawner.aliveEnemies.Remove(this);
         if (spawner.curCount == 0) {
             StopCoroutine("SpawnEnemy");
             spawner.isWavePlayed = false;

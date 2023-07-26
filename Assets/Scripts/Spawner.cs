@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour {
 
     public float delay = 1f;
 
-    public List<Enemy> aliveEnemies = new List<Enemy>();
+    public static List<Enemy> aliveEnemies = new List<Enemy>();
 
     public void Spawn() {
         if (!isWavePlayed) StartCoroutine("SpawnEnemy");
