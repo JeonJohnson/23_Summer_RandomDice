@@ -42,5 +42,9 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Dice
+<<<<<<< Updated upstream
     uniqueID: 3205970035
+=======
+    uniqueID: 1426238663
+>>>>>>> Stashed changes
     locked: 0
