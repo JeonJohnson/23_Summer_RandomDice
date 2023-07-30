@@ -8,6 +8,9 @@ using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Inst { get; private set; }
+
+    public List<Enemy> enemies;
+
     void Awake()
     {
         Inst = this;
@@ -30,10 +33,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-        {
-            TryRandomSpawn(1);
-        }
+        AddEnemy();
     }
 
     public bool TryRandomSpawn(int level = 1)
@@ -59,11 +59,8 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    public void SpawnBtnClick()
-    {
-        TryRandomSpawn(1);
-    }
-
+    public void SpawnBtnClick() => TryRandomSpawn(1);
+    
     public Vector2 GetspawnPositions(int index) => spawnPositions[index];
 
     public GameObject[] GetRaycastAll(int layerMask)
@@ -73,5 +70,36 @@ public class GameManager : MonoBehaviour
         RaycastHit2D[] raycastHit2Ds = Physics2D.RaycastAll(mousePos, Vector3.forward, float.MaxValue, 1 << layerMask);
         var results = Array.ConvertAll(raycastHit2Ds, x => x.collider.gameObject);
         return results;          
+    }
+
+    public void AddEnemy()
+    {
+        enemies.Clear();
+
+        foreach (Enemy enemy in Spawner.aliveEnemies)
+        {
+            enemies.Add(enemy);
+        }
+    }
+
+    public Enemy GetRandomEnemy()
+    {
+        if (enemies.Count <= 0)
+            return null;
+
+        return enemies[Random.Range(0, enemies.Count)];
+    }
+
+    public void SpawnDiceBullet(SerializeDiceData diceData, Enemy targetEnemy)
+    {
+        ObjectPooler objectPooler = ObjectPooler.Inst;
+
+        GameObject diceBulletObj = objectPooler.SpawnFromPool("diceBullet", transform.position, Utils.QI);
+
+        DiceBullet diceBullet = diceBulletObj.GetComponent<DiceBullet>();
+        if (diceBullet != null)
+        {
+            diceBullet.SetupDiceBullet(diceData, targetEnemy);
+        }
     }
 }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour {
-
+public class Spawner : MonoBehaviour
+{
     public Transform spawnPoint;
     public PoolManager pool;
     SpriteRenderer spriter;
@@ -18,17 +18,25 @@ public class Spawner : MonoBehaviour {
 
     public static List<Enemy> aliveEnemies = new List<Enemy>();
 
-    public void Spawn() {
+    void Awake()
+    {
+        aliveEnemies.Clear();
+    }
+
+    public void Spawn()
+    {
         if (!isWavePlayed) StartCoroutine("SpawnEnemy");
     }
 
-    IEnumerator SpawnEnemy() {
+    IEnumerator SpawnEnemy()
+    {
         count = 0;
+        aliveEnemies.Clear();
         isWavePlayed = true;
-        while (count < maxCount && isWavePlayed) {
+        while (count < maxCount && isWavePlayed)
+        {
             GameObject enemy = pool.Get(0);
-            
-            
+                        
             enemy.transform.position = spawnPoint.position;
             enemy.GetComponent<Enemy>().Init();
             spriter = enemy.GetComponent<SpriteRenderer>();

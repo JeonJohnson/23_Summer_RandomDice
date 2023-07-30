@@ -28,7 +28,6 @@ public class SerializeDiceData
     }
 }
 
-
 [System.Serializable]
 public class Tile
 {
@@ -38,6 +37,7 @@ public class Tile
 public class Utils
 {
     public const int MAX_DICE_LEVEL = 6;
+    public const int DICE_LAYER = 6;
 
     public static readonly Quaternion QI = Quaternion.identity;
 
@@ -50,8 +50,6 @@ public class Utils
             return result;  
         }
     }
-    public const int DICE_LAYER = 6;
-
 
    public static readonly WaitForSeconds delayAttack = new WaitForSeconds(0.5f);   
     

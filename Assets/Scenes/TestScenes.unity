@@ -159,7 +159,6 @@ MonoBehaviour:
   maxCount: 5
   isWavePlayed: 0
   delay: 0.75
-  aliveEnemies: []
 --- !u!4 &14851863
 Transform:
   m_ObjectHideFlags: 0
@@ -873,6 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36afd4e3b64a0bd46aa2537467ffd30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemies: []
   diceSo: {fileID: 11400000, guid: 712d5069c36119b45aa72309694b7cf6, type: 2}
   spawnPositions:
   - {x: -2.4, y: 0.2}
@@ -2922,6 +2922,9 @@ MonoBehaviour:
   pools:
   - tag: dice
     prefab: {fileID: 5775828713984558796, guid: 49c66ce42f3b0d549b9f1f7c80aabe20, type: 3}
+    size: 30
+  - tag: diceBullet
+    prefab: {fileID: 3859974661296490992, guid: 84c1f63705873cd4da0e90a0661b8df4, type: 3}
     size: 100
   spawnedObjects: []
 --- !u!4 &2070317486

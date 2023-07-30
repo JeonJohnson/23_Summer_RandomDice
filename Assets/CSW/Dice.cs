@@ -22,7 +22,6 @@ public class Dice : MonoBehaviour
     public int curIndex;
     //근희 테스트 
 
-
     public void SetupSlot(SerializeDiceData serializeDiceData)
     {
         this.serializeDiceData = serializeDiceData;
@@ -34,6 +33,7 @@ public class Dice : MonoBehaviour
         {
             dots[i].GetComponent<SpriteRenderer>().color = diceData.color;
         }
+        StartCoroutine(DiceBulletSpawnCo());
     }
 
     public void SetDots(int level)
@@ -60,8 +60,6 @@ public class Dice : MonoBehaviour
             dots[i].localPosition = positions[i];
         }
     }
-
-
 
     void OnDisable()
     {
@@ -114,7 +112,6 @@ public class Dice : MonoBehaviour
         }
     }
     
-
     void MoveTransform(Vector2 targetpos, bool useDotween, float duration = 0f, TweenCallback action = null) 
     {
         if (useDotween)
@@ -124,6 +121,25 @@ public class Dice : MonoBehaviour
         else
         {
             transform.position = targetpos;
+        }
+    }
+    IEnumerator DiceBulletSpawnCo()
+    {
+        while (true)
+        {
+            Enemy targetEnemy = null;
+
+            if (GameManager.Inst.enemies.Count > 0)
+            {
+                targetEnemy = GameManager.Inst.enemies[0];
+            }
+
+            if (targetEnemy != null)
+            {
+                var diceBulletObj = ObjectPooler.Inst.SpawnFromPool("diceBullet", dots[0].position, Utils.QI);
+                diceBulletObj.GetComponent<DiceBullet>().SetupDiceBullet(serializeDiceData, targetEnemy);
+            }
+            yield return Utils.delayAttack;
         }
     }
 }

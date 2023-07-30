@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
-
+public class Player : MonoBehaviour
+{
     public static Player instance;
 
     public bool isLive = true;
@@ -14,25 +14,32 @@ public class Player : MonoBehaviour {
 
     public int money;
 
-    void Awake() {
+    void Awake()
+    {
         instance = this;
     }
 
-    public void takePlayerDamage(int dmg) {
-        if (playerCurHealth - dmg <= 0) {
+    public void takePlayerDamage(int dmg)
+    {
+        if (playerCurHealth - dmg <= 0)
+        {
             playerCurHealth = 0;
             PlayerDead();
-        } else {
+        }
+        else
+        {
             playerCurHealth -= dmg;
         }
     }
 
-    void OnEnable() {
+    void OnEnable()
+    {
         isLive = true;
         playerCurHealth = playerMaxHealth;
     }
 
-    void PlayerDead() {
+    void PlayerDead()
+    {
         isLive = false;
         Time.timeScale = 0;
     }
