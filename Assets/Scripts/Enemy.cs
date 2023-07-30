@@ -84,13 +84,10 @@ public class Enemy : MonoBehaviour
             spawner.curCount -= 1;
             isLive = false;
         }
-
-        Spawner.aliveEnemies.Remove(this);
-        if (spawner.curCount == 0)
-        {
-            StopCoroutine("SpawnEnemy");
-            spawner.isWavePlayed = false;
+        if (isBoss) {
+            spawner.bossKill = true;
         }
+        Spawner.aliveEnemies.Remove(this);
     }
 
     void Arrive(int value)
@@ -98,11 +95,6 @@ public class Enemy : MonoBehaviour
         gameObject.SetActive(false);
         spawner.curCount -= 1;
         Spawner.aliveEnemies.Remove(this);
-        if (spawner.curCount == 0)
-        {
-            StopCoroutine("SpawnEnemy");
-            spawner.isWavePlayed = false;
-        }
         Player.instance.takePlayerDamage(value);
     }
 

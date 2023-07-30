@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     public static Player instance;
 
     public bool isLive = true;
-    public int wave = 0;
 
     public int playerCurHealth;
     public int playerMaxHealth;

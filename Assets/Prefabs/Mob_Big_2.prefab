@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9220370825796909089}
   - component: {fileID: 5626736922762010345}
   m_Layer: 0
-  m_Name: Mob_Normal_1
+  m_Name: Mob_Big_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ RectTransform:
   m_GameObject: {fileID: 6848008678521938479}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4468068942812495859}
   m_Father: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e62aa16d065030c4b8591c492f5734d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aad05816ea82e944e9d8c8f996233d7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,9 +106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   health: 0
-  maxHealth: 100
+  maxHealth: 2500
   isLive: 0
-  isBoss: 0
+  isBoss: 1
   wayArray:
   - {fileID: 0}
   - {fileID: 0}
