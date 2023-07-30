@@ -16,23 +16,23 @@ public class ObjectPooler : MonoBehaviour
     }
 
     public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
+    public Dictionary<string, List<GameObject>> poolDictionary;
     public List<GameObject> spawnedObjects;
 
     void Start()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        poolDictionary = new Dictionary<string, List<GameObject>>();
 
         foreach (Pool pool in pools)
         {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
+            List<GameObject> objectPool = new List<GameObject>();
 
             for (int i = 0; i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.transform.SetParent(transform);
                 obj.SetActive(false);
-                objectPool.Enqueue(obj);
+                objectPool.Add(obj);
                 spawnedObjects.Add(obj);
             }
             poolDictionary.Add(pool.tag, objectPool);
@@ -47,12 +47,27 @@ public class ObjectPooler : MonoBehaviour
             return null;
         }
 
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        List<GameObject> objectList = poolDictionary[tag];
+        GameObject objectToSpawn = null;
+
+        for (int i = 0; i < objectList.Count; i++)
+        {
+            if (!objectList[i].activeInHierarchy)
+            {
+                objectToSpawn = objectList[i];
+                break;
+            }
+        }
+
+        if (objectToSpawn == null)
+        {
+            objectToSpawn = Instantiate(poolDictionary[tag][0]);
+            objectList.Add(objectToSpawn);
+            spawnedObjects.Add(objectToSpawn);
+        }
 
         objectToSpawn.transform.position = position;
         objectToSpawn.SetActive(true);
-
-        poolDictionary[tag].Enqueue(objectToSpawn);
 
         return objectToSpawn;
     }
