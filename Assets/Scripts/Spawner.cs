@@ -43,20 +43,24 @@ public class Spawner : MonoBehaviour
         if (!isWavePlayed) StartCoroutine(GameTimer());
     }
 
-    IEnumerator GameTimer() {
+    IEnumerator GameTimer()
+    {
         wave += 1;
         waveText.text = wave.ToString("00");
         curTime = waveTime;
         timeText.text = (curTime / 60).ToString("00") + ":" + (curTime % 60).ToString("00");
         yield return new WaitForSeconds(3f);
         Spawn();
-        while (true) {
-            while (curTime > 0) {
+        while (true)
+        {
+            while (curTime > 0)
+            {
                 curTime -= 1;
                 timeText.text = (curTime / 60).ToString("00") + ":" + (curTime % 60).ToString("00");
                 yield return new WaitForSeconds(1f);
             }
-            if (bossKill) {
+            if (bossKill)
+            {
                 wave += 1;
                 waveText.text = wave.ToString("00");
                 curTime = waveTime;
@@ -71,9 +75,12 @@ public class Spawner : MonoBehaviour
     {
         count = 0;
         isWavePlayed = true;
-        while (true) {
-            while (curTime >= 0 && isWavePlayed) {
-                if (curTime > 0) {
+        while (true)
+        {
+            while (curTime >= 0 && isWavePlayed)
+            {
+                if (curTime > 0)
+                {
                     GameObject enemy = pool.Get(Random.Range(0, 1));
                     enemy.transform.position = spawnPoint.position;
                     enemy.GetComponent<Enemy>().Init();
@@ -82,11 +89,13 @@ public class Spawner : MonoBehaviour
                     aliveEnemies.Add(enemy.GetComponent<Enemy>());
                     curCount += 1;
                     count += 1;
-                    if (bossKill) {
+                    if (bossKill)
+                    {
                         bossKill = false;
                     }
                 }
-                if (aliveEnemies.Count == 0 && curCount == 0 && curTime == 0 && !bossKill) {
+                if (aliveEnemies.Count == 0 && curCount == 0 && curTime == 0 && !bossKill)
+                {
                     GameObject enemy = pool.Get(Random.Range(2, 3));
                     enemy.transform.position = spawnPoint.position;
                     enemy.GetComponent<Enemy>().Init();

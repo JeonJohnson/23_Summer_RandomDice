@@ -123,6 +123,7 @@ public class Dice : MonoBehaviour
             transform.position = targetpos;
         }
     }
+
     IEnumerator DiceBulletSpawnCo()
     {
         while (true)

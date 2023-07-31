@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
         //근희 테스트 
     }
 
-
     public DiceSo diceSo;
     [SerializeField] Vector2[] spawnPositions;
     [SerializeField] public SerializeDiceData[] serializeDiceDatas; //모든 주사위 정보 직렬화 
@@ -79,27 +78,6 @@ public class GameManager : MonoBehaviour
         foreach (Enemy enemy in Spawner.aliveEnemies)
         {
             enemies.Add(enemy);
-        }
-    }
-
-    public Enemy GetRandomEnemy()
-    {
-        if (enemies.Count <= 0)
-            return null;
-
-        return enemies[Random.Range(0, enemies.Count)];
-    }
-
-    public void SpawnDiceBullet(SerializeDiceData diceData, Enemy targetEnemy)
-    {
-        ObjectPooler objectPooler = ObjectPooler.Inst;
-
-        GameObject diceBulletObj = objectPooler.SpawnFromPool("diceBullet", transform.position, Utils.QI);
-
-        DiceBullet diceBullet = diceBulletObj.GetComponent<DiceBullet>();
-        if (diceBullet != null)
-        {
-            diceBullet.SetupDiceBullet(diceData, targetEnemy);
         }
     }
 }
