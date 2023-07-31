@@ -30,9 +30,4 @@ public class Order : MonoBehaviour
             renderer.sortingOrder = mulOrder + 1; 
         }
     }
-
-    internal void SetMostFrontOrder()
-    {
-        throw new NotImplementedException();
-    }
 }

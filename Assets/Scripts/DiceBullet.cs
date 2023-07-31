@@ -25,11 +25,20 @@ public class DiceBullet : MonoBehaviour
     {
         while (true)
         {
+            if (targetEnemy == null || targetEnemy.health <= 0)
+            {
+                Die();
+                yield break;
+            }
+
             transform.position = Vector2.MoveTowards(transform.position, targetEnemy.transform.position, speed * Time.deltaTime);
             yield return null;
 
-            if ((transform.position - targetEnemy.transform.position).sqrMagnitude < 0.01f)
+            if ((transform.position - targetEnemy.transform.position).sqrMagnitude < speed * Time.deltaTime * speed * Time.deltaTime)
+            {
+                transform.position = targetEnemy.transform.position;
                 break;
+            }
         }
 
         int totalAttackDamage = Utils.TotalAttackDamage(diceDate.basicAttackDamage, serializeDiceData.level);
