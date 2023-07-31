@@ -7,9 +7,14 @@ public class ControllScene : MonoBehaviour
 {
     void Update()
     {
-        if (Input.anyKeyDown)
+        Debug.Log(SceneManager.sceneCount);
+        if (Input.anyKeyDown && SceneManager.sceneCount == 1)
         {
             LoadingScene.LoadScene("InGame");
         }
+    }
+
+    public void Retry() {
+        LoadingScene.LoadScene("InGame");
     }
 }

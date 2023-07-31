@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 {
     public float speed;
     public float health;
-    public float maxHealth;
 
     public bool isLive;
     public bool isBoss;
@@ -63,14 +62,12 @@ public class Enemy : MonoBehaviour
     {
         isLive = true;
         rigid.simulated = true;
-        health = maxHealth;
         targetWay = 2;
         DrawText();
     }
 
     public void Init()
     {
-        health = maxHealth;
         targetWay = 2;
         DrawText();
     }

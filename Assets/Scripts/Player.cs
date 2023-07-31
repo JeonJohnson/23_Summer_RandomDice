@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     public int money;
 
+    public GameObject gameOver;
+
     void Awake()
     {
         instance = this;
@@ -29,17 +31,20 @@ public class Player : MonoBehaviour
         {
             playerCurHealth -= dmg;
         }
+        Heart.DrawHeart();
     }
 
     void OnEnable()
     {
         isLive = true;
         playerCurHealth = playerMaxHealth;
+        Heart.DrawHeart();
     }
 
     void PlayerDead()
     {
         isLive = false;
         Time.timeScale = 0;
+        gameOver.SetActive(true);
     }
 }
