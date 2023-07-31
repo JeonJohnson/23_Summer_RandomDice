@@ -79,13 +79,15 @@ public class Enemy : MonoBehaviour
     {
         gameObject.SetActive(false);
 
-        if(isLive == true)
+        if(isLive == true && !isBoss)
         {
             spawner.curCount -= 1;
             isLive = false;
         }
-        if (isBoss) {
+        if (isBoss && !spawner.bossKill) {
             spawner.bossKill = true;
+            isLive = false;
+            Debug.Log("Boss Kill");
         }
         Spawner.aliveEnemies.Remove(this);
     }
@@ -93,7 +95,9 @@ public class Enemy : MonoBehaviour
     void Arrive(int value)
     {
         gameObject.SetActive(false);
-        spawner.curCount -= 1;
+        if (!isBoss) {
+            spawner.curCount -= 1;
+        }
         Spawner.aliveEnemies.Remove(this);
         Player.instance.takePlayerDamage(value);
     }

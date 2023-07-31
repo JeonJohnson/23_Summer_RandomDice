@@ -82,17 +82,17 @@ public class Spawner : MonoBehaviour
                     aliveEnemies.Add(enemy.GetComponent<Enemy>());
                     curCount += 1;
                     count += 1;
+                    if (bossKill) {
+                        bossKill = false;
+                    }
                 }
-                if (aliveEnemies.Count == 0 && curCount == 0 && curTime == 0) {
+                if (aliveEnemies.Count == 0 && curCount == 0 && curTime == 0 && !bossKill) {
                     GameObject enemy = pool.Get(Random.Range(2, 3));
                     enemy.transform.position = spawnPoint.position;
                     enemy.GetComponent<Enemy>().Init();
                     spriter = enemy.GetComponent<SpriteRenderer>();
                     spriter.sortingOrder = 1000 - curCount;
                     aliveEnemies.Add(enemy.GetComponent<Enemy>());
-                }
-                if (bossKill) {
-                    bossKill = false;
                 }
                     yield return new WaitForSeconds(delay);
             }

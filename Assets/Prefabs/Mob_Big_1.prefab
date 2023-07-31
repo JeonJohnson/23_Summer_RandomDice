@@ -107,7 +107,7 @@ MonoBehaviour:
   speed: 1
   health: 0
   maxHealth: 2500
-  isLive: 0
+  isLive: 1
   isBoss: 1
   wayArray:
   - {fileID: 0}
